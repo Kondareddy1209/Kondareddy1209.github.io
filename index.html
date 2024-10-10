@@ -20,9 +20,8 @@
                     <li><a href="#Contact">Contact</a></li>
                     <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
-            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             <div class="header-text">
                 <p>CyberSecurity Analyst</p>
                 <h1>Hi, I'm <span>KondaReddy</span><br> From India</h1>
@@ -200,9 +199,11 @@
     
     <script>
         var sidemenu = document.getElementById("sidemenu");
+        
         function openmenu() {
             sidemenu.style.right = "0";
         }
+        
         function closemenu() {
             sidemenu.style.right = "-200px";
         }
