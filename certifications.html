@@ -1,47 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Certifications</title>
+    <title>Certifications</title>
     <style>
+        /* Global Styles */
         body {
             background: url("background3.jpg") no-repeat center center fixed;
             background-size: cover;
-            color: #0f0; /* Green text for a cyber terminal vibe */
+            color: #00f; /* Blue text for a cyber terminal vibe */
             margin: 0;
             padding: 0;
             font-family: "Courier New", Courier, monospace; /* Terminal-like font */
+            overflow-x: hidden;
         }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loader::after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            border: 5px solid #00f;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            opacity: 0;
+            animation: fadeInContent 1s ease-in-out forwards;
         }
+        @keyframes fadeInContent {
+            to { opacity: 1; }
+        }
+
+        /* Title */
         h1 {
             text-align: center;
             margin-bottom: 40px;
-            color: #0f0; /* Neon green title */
-            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; /* Glow effect */
+            color: #00f; /* Blue title */
+            text-shadow: 0 0 10px #00f, 0 0 20px #00f; /* Glow effect */
+            animation: glow 2s infinite alternate, float 3s ease-in-out infinite;
         }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00f, 0 0 20px #00f; }
+            to { text-shadow: 0 0 20px #00f, 0 0 40px #00f; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Certifications Grid */
         .certifications {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
+
+        /* Certification Card */
         .certification-card {
             background-color: rgba(0, 0, 0, 0.8); /* Transparent dark background */
-            border: 1px solid #0f0; /* Green border */
+            border: 1px solid #00f; /* Blue border */
             border-radius: 8px;
             padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2); /* Green glow effect */
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.2); /* Blue glow effect */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-in-out, floatCard 5s ease-in-out infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .certification-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.5); /* Intensified glow */
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 255, 0.5); /* Intensified glow */
         }
+
+        /* Card Content */
         .certification-title {
             font-size: 1.5em;
             margin-bottom: 10px;
@@ -59,12 +120,13 @@
         .badge {
             margin-top: 10px;
             display: inline-block;
-            background-color: #0f0; /* Green background */
-            color: #000; /* Black text */
+            background-color: #00f; /* Blue background */
+            color: #fff; /* White text */
             padding: 5px 10px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .badge:hover {
             background-color: #0ff; /* Change to cyan on hover */
@@ -77,16 +139,34 @@
             border-radius: 8px;
             max-height: 200px;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
+        .certification-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
         .copyright {
             text-align: center;
             color: #fff;
             margin-top: 40px;
             font-size: 0.9em;
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .heart {
             color: #f00; /* Red heart */
+            animation: heartbeat 1s infinite;
         }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
         @media screen and (max-width: 768px) {
             .certifications {
                 grid-template-columns: 1fr;
@@ -95,16 +175,47 @@
     </style>
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loader"></div>
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Certifications</h1>
         <div class="certifications">
-            <!-- Google Cloud Certification -->
+            <!-- Code Vipassana Season 7 -->
             <div class="certification-card">
                 <img src="code vipasana.png" alt="Code Vipassana season7" class="certification-img">
-                <div class="certification-title">Code Vipassana season7 </div>
+                <div class="certification-title">Code Vipassana season7</div>
                 <div class="issuer">Google Developers</div>
                 <div class="date">Issued: October 5, 2024</div>
                 <a href="code vipasana season7.pdf" target="_blank" class="badge">View Certificate</a>
+            </div>
+
+            <!-- Code Vipassana Season 8 -->
+            <div class="certification-card">
+                <img src="code vipasana.png" alt="Code Vipassana season8" class="certification-img">
+                <div class="certification-title">Code Vipassana season8</div>
+                <div class="issuer">Google Developers</div>
+                <div class="date">Issued: January 5, 2025</div>
+                <a href="codevipasana season 8.pdf" target="_blank" class="badge">View Certificate</a>
+            </div>
+
+            <!-- Google Play Store -->
+            <div class="certification-card">
+                <img src="Screenshot 2025-02-13 100637.png" alt="Google Play store" class="certification-img">
+                <div class="certification-title">Google Play store</div>
+                <div class="issuer">Google Developers</div>
+                <div class="date">Issued: October 5, 2024</div>
+                <a href="Google Play Academy.pdf" target="_blank" class="badge">View Certificate</a>
+            </div>
+
+            <!-- AWS Solution Architecture -->
+            <div class="certification-card">
+                <img src="AWS.jpg" alt="AWS Solution Architecture" class="certification-img">
+                <div class="certification-title">Solution Architecture Job Simulation in Forage</div>
+                <div class="issuer">Forage</div>
+                <div class="date">Issued: December 23, 2024</div>
+                <a href="Solution Architecture Job Simulation In AWS.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
 
             <!-- AI Builders Lab Bootcamp -->
@@ -115,6 +226,8 @@
                 <div class="date">Issued: November 14, 2024</div>
                 <a href="Hack2skill-Certificate.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Teachnook Internship Completion -->
             <div class="certification-card">
                 <img src="teachnook.jpg" alt="Internship Completion" class="certification-img">
                 <div class="certification-title">Certificate on Internship Completion</div>
@@ -122,6 +235,8 @@
                 <div class="date">Issued: 31 January 2024</div>
                 <a href="Ambavaram Tirumala Konda Reddy.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Teachnook Course Completion -->
             <div class="certification-card">
                 <img src="teachnook.jpg" alt="Course Completion" class="certification-img">
                 <div class="certification-title">Certificate on Course Completion</div>
@@ -129,6 +244,8 @@
                 <div class="date">Issued: 29 Feb 2024</div>
                 <a href="Ambavaram Tirumala Konda Reddy(course completion).pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Google Data Analytics -->
             <div class="certification-card">
                 <img src="Google data Analytics.jpg" alt="Google Analytics Certification" class="certification-img">
                 <div class="certification-title">Google Analytics Certification</div>
@@ -136,6 +253,8 @@
                 <div class="date">Issued: 27 September 2024</div>
                 <a href="Google data Analytics.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Oracle Cloud Infrastructure -->
             <div class="certification-card">
                 <img src="oracle.jpg" alt="Oracle Cloud Certification" class="certification-img">
                 <div class="certification-title">Oracle Cloud Infrastructure Foundations</div>
@@ -143,6 +262,8 @@
                 <div class="date">Issued: May 2023</div>
                 <a href="Oracle Cloud Infrastructure 2024 Certified Foundations Associate.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- JP Morgan Cybersecurity -->
             <div class="certification-card">
                 <img src="jp morgan.jpg" alt="Cybersecurity Job Simulation" class="certification-img">
                 <div class="certification-title">Cybersecurity Job Simulation</div>
@@ -150,6 +271,8 @@
                 <div class="date">Issued: August 2024</div>
                 <a href="JPMorgan Chase & Co..pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- PWC Cybersecurity -->
             <div class="certification-card">
                 <img src="pwc.jpeg" alt="Cybersecurity Job Simulation" class="certification-img">
                 <div class="certification-title">Cybersecurity Job Simulation</div>
@@ -157,6 +280,8 @@
                 <div class="date">Issued: August 2024</div>
                 <a href="PwC Switzerland.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Oracle AI Foundations -->
             <div class="certification-card">
                 <img src="oracle.jpg" alt="AI Foundations Associate" class="certification-img">
                 <div class="certification-title">Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate</div>
@@ -164,6 +289,8 @@
                 <div class="date">Issued: 16 August 2024</div>
                 <a href="Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Microsoft Techvision -->
             <div class="certification-card">
                 <img src="microsoft.jpg" alt="Techvision 2024" class="certification-img">
                 <div class="certification-title">TECHVISION 2024 In Microsoft Bangalore</div>
@@ -171,6 +298,8 @@
                 <div class="date">Issued: 31 August 2024</div>
                 <a href="Tech vision 2024.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Let's Upgrade Machine Learning -->
             <div class="certification-card">
                 <img src="let_s upgrade.jpg" alt="Machine Learning" class="certification-img">
                 <div class="certification-title">Machine Learning By Using Python</div>
@@ -178,20 +307,26 @@
                 <div class="date">Issued: 2 August 2024</div>
                 <a href="let_s upgrade-Reddy.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Prodigy Info Tech Internship -->
             <div class="certification-card">
-                <img src="prodigy.jpg" alt="successfully completed intern in Prodigy Info Tech " class="certification-img">
-                <div class="certification-title">successfully completed Intern in Prodigy Info Tech </div>
-                <div class="issuer">Prodigy Info Tech </div>
+                <img src="prodigy.jpg" alt="Prodigy Info Tech Internship" class="certification-img">
+                <div class="certification-title">Successfully Completed Intern in Prodigy Info Tech</div>
+                <div class="issuer">Prodigy Info Tech</div>
                 <div class="date">Issued: Nov 2</div>
                 <a href="Prodigy completeion.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Prodigy Info Tech Recommendation -->
             <div class="certification-card">
-                <img src="prodigy.jpg" alt="successfully completed Intern in Prodigy Info Tech" class="certification-img">
-                <div class="certification-title">Prodigy Info Tech </div>
-                <div class="issuer">Prodigy Info Tech </div>
+                <img src="prodigy.jpg" alt="Prodigy Info Tech Recommendation" class="certification-img">
+                <div class="certification-title">Prodigy Info Tech</div>
+                <div class="issuer">Prodigy Info Tech</div>
                 <div class="date">Issued: Nov 2</div>
                 <a href="Letter of Recommendation.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Google Cybersecurity Foundations -->
             <div class="certification-card">
                 <img src="google.jpg" alt="Foundations of Cybersecurity" class="certification-img">
                 <div class="certification-title">Foundations of Cybersecurity</div>
@@ -199,6 +334,8 @@
                 <div class="date">Issued: July 14 2024</div>
                 <a href="Fundamentals of cybersecurity Cert by Coursera.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Meta Front-End Development -->
             <div class="certification-card">
                 <img src="meta.jpg" alt="Front-End Development" class="certification-img">
                 <div class="certification-title">Introduction to Front-End Development</div>
@@ -206,24 +343,49 @@
                 <div class="date">Issued: Feb 16 2024</div>
                 <a href="certificate from META 1.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Content Stack Front-End Development -->
             <div class="certification-card">
-                <img src="content.jpeg" alt="Code Vipassana season7 Exceptional Performance" class="certification-img">
+                <img src="content.jpeg" alt="Content Stack Front-End Development" class="certification-img">
                 <div class="certification-title">Introduction to Front-End Development</div>
                 <div class="issuer">Content Stack</div>
                 <div class="date">Issued: October 5</div>
                 <a href="content Stack.png" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Udemy Ethical Hacking -->
             <div class="certification-card">
-                <img src="udemy.png" alt="successfully completed Ethical Hacking COurse on Udemy" class="certification-img">
+                <img src="udemy.png" alt="Udemy Ethical Hacking" class="certification-img">
                 <div class="certification-title">Udemy Ethical Hacking Course</div>
                 <div class="issuer">Udemy</div>
                 <div class="date">Issued: Nov 16</div>
                 <a href="Udemy Ethical Hacking Web Hacking Intro.pdf" target="_blank" class="badge">View Certificate</a>
             </div>
+
+            <!-- Udemy SQL -->
+            <div class="certification-card">
+                <img src="udemy.png" alt="SQL- The Complete Introduction to SQL" class="certification-img">
+                <div class="certification-title">SQL- The Complete Introduction to SQL</div>
+                <div class="issuer">Udemy</div>
+                <div class="date">Issued: Feb 3 2025</div>
+                <a href="SQL FROM UDEMY.pdf" target="_blank" class="badge">View Certificate</a>
+            </div>
         </div>
     </div>
+
+    <!-- Footer -->
     <div class="copyright">
         <p>Copyright &copy; 2024 Konda. <span class="heart">💚</span> Made for my personal portfolio.</p>
     </div>
+
+    <!-- JavaScript for Loading Animation -->
+    <script>
+        window.addEventListener("load", function () {
+            const loader = document.querySelector(".loader");
+            loader.style.display = "none";
+            document.querySelector(".container").style.opacity = "1";
+        });
+    </script>
 </body>
 </html>
+
